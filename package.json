@@ -1,9 +1,9 @@
 {
-  "name": "awesome-cordova-plugins",
+  "name": "@pragmatic_apps/awesome-cordova-google-maps",
   "version": "6.4.0",
-  "description": "Native plugin wrappers for Cordova and Ionic with TypeScript, ES6+, Promise and Observable support",
-  "homepage": "https://awesome-cordova-plugins.com",
-  "author": "Daniel Sogl <me@danielsogl.com> (https://danielsogl.com)",
+  "description": "Inofficial migration of Ionic Native wrapper for Google Maps Plugin to Awesome Cordova namespace",
+  "homepage": "https://pragmatic-apps.de",
+  "author": "Pragmatic Apps <info@pragmatic-apps.de> (https://pragmatic-apps.de)",
   "license": "MIT",
   "scripts": {
     "prepare": "is-ci || husky install",
@@ -20,8 +20,9 @@
     "readmes": "gulp readmes",
     "docs-json": "ts-node -P scripts/tsconfig.json scripts/docs-json",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
-    "shipit": "npm run build && npm run readmes && npm run npmpub",
-    "prettier": "prettier --write --ignore-unknown \"**/*\""
+    "prettier": "prettier --write --ignore-unknown \"**/*\"",
+    "dev": "npm run build && cp package.json dist/@awesome-cordova-plugins/plugins/google-maps",
+    "shipit": "npm run dev && cp README.md dist/@awesome-cordova-plugins/plugins/google-maps && npm login && npm run npmpub && npm logout"
   },
   "dependencies": {
     "tslib": "2.6.1"
@@ -87,10 +88,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/danielsogl/awesome-cordova-plugins.git"
+    "url": "git+https://github.com/Pragmatic-Apps/awesome-cordova-google-maps.git"
   },
   "bugs": {
-    "url": "https://github.com/danielsogl/awesome-cordova-plugins/issues"
+    "url": "https://github.com/Pragmatic-Apps/awesome-cordova-google-maps/issues"
   },
   "config": {
     "commitizen": {

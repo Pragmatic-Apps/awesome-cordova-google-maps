@@ -22,7 +22,7 @@ const PACKAGE_JSON_BASE = {
   license: 'MIT',
   repository: {
     type: 'git',
-    url: 'https://github.com/danielsogl/awesome-cordova-plugins.git',
+    url: 'https://github.com/Pragmatic-Apps/awesome-cordova-google-maps.git',
   },
 };
 
@@ -40,7 +40,7 @@ const PLUGIN_PEER_DEPENDENCIES = {
 
 function getPackageJsonContent(name: string, peerDependencies = {}, dependencies = {}) {
   return merge(PACKAGE_JSON_BASE, {
-    name: '@awesome-cordova-plugins/' + name,
+    name: '@pragmatic_apps/' + name,
     dependencies,
     peerDependencies,
     version: VERSION,
@@ -78,7 +78,8 @@ async function publish(ignoreErrors = false) {
   Logger.profile('Publishing');
   // upload 1 package per CPU thread at a time
   const worker = Queue.async.asyncify(
-    (pkg: any) =>
+    (pkg: any) => {
+    if (/google\-maps$/.test(pkg)) {
       new Promise<string | void>((resolve, reject) => {
         exec(`npm publish ${pkg} ${FLAGS}`, (err, stdout) => {
           if (stdout) {
@@ -96,6 +97,8 @@ async function publish(ignoreErrors = false) {
           }
         });
       })
+    }
+  }
   );
 
   try {
